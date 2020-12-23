@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章详情</title>
+    <script src="../javascripts/jQuery3.5.1.js"></script>
+    <style>
+        body{
+            font-size: 14px;
+        }
+        #wrapper{
+            width: 1000px;
+            line-height: 24px;
+            margin: 0 auto;
+        }
+        #wrapper h1{
+            line-height: 35px;
+            text-align: center;
+            border-bottom: dashed 1px #eee;
+            padding-bottom: 10px;
+        }
+        #wrapper p{
+            line-height: 35px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        $(function () {
+            // console.log($('#articleForm').serialize()); 
+            // console.log(location.href);
+            let id = location.href.split('=')[1];
+            // console.log(id);
+            $.get('/api/articles/' + id,function(data){
+                // console.log(data);
+                $('#title').html(data.data.title);
+                $('#author').html(data.data.author);
+                $('#source').html(data.data.source);
+                $('#createTime').html(data.data.createTime);
+                $('#content').html(data.data.content);
+            })
+            // $('#btnUpdate').click(function(){
+            //     $.ajax({
+            //         url:'/api/articles/' + id,
+            //         // type:'put',
+            //         type:'GET',
+            //         data:$('#articleForm').serialize(),
+            //         success:function(data){
+            //             alert(data.msg);
+            //             location.href = "/api/articles";
+            //         }
+            //     })
+            // })
+        })
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <h1 id="title"></h1>
+        <p>作者：<span id="author"></span> 来源：<span id="source"></span> 发布时间：<span id="createTime"></span></p>
+        <div id="content"></div>
+    </div>
+</body>
+</html>

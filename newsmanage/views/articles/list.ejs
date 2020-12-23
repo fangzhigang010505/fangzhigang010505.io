@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章列表</title>
+    <script src="/javascripts/jQuery3.5.1.js"></script>
+    <style type="text/css">
+        table{ border-collapse:collapse; border:solid 1px Black; }
+        table td{ width:50px; height:20px;  border:solid 1px Black; padding:5px;}
+        .td100{
+            width: 100px;
+        }
+        #btnSave{
+            width:80px;
+            background-color: darkorange;
+            color: white;
+            border: soild 1px #ff8c00;
+            height: 20px;
+        }
+        .tdcenter{
+            text-align: center;
+        }
+    </style>
+    <script>
+        $(function(){
+            $('.del').click(function () {
+                // console.log($(this).data('id'));  
+                $.ajax({
+                    url:'/api/articles/' + $(this).data('id'),
+                    type:'delete',
+                    success:function(data){
+                        alert(data.msg);
+                        location.href = "/api/articles";
+                    }
+                })
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <a href="/articles/news.html">新增</a>
+    <table>
+        <tr>
+            <td class="tdcenter">标题</td>
+            <td class="tdcenter td100">作者</td>
+            <td class="tdcenter td100">来源</td>
+            <td class="tdcenter td100">时间</td>
+            <td class="tdcenter td100">操作</td>
+        </tr> 
+        <% articles.forEach((article)=>{ %>
+            <tr>
+                <td><a href="/articles/view.html?id=<%= article.id %>"><%= article.title %></a></td>
+                <td class="tdcenter"><%= article.author %></td>
+                <td class="tdcenter"><%= article.source %></td>
+                <td class="tdcenter"><%= article.createTime %></td>
+                <td>
+                    <a href="/articles/edit.html?id=<%= article.id %>">修改</a>
+                    <a class="del" data-id='<%= article.id %>' href="#">删除</a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>

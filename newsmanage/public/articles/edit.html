@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章修改</title>
+    <script src="/javascripts/jQuery3.5.1.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        table td {
+            border: soild 1px #eeeeee;
+            padding-right: 5px;
+            height: 30px;
+            font-family: "微软雅黑";
+        }
+
+        table td .lefttable {
+            width: 100px;
+            text-align: right;
+        }
+
+        table td input {
+            width: 200px;
+            border: soild 1px #eeeeee;
+        }
+
+        table td textarea {
+            width: 500px;
+            height: 200px;
+            border: soild 1px #eee;
+            margin: 5px;
+
+        }
+
+        #btnUpdate {
+            width: 80px;
+            background-color: darkorange;
+            color: white;
+            border: soild 1px #ff8c00;
+            height: 20px;
+        }
+    </style>
+    <script>
+        $(function () {
+            let id = location.href.split('=')[1];
+            $.get('/api/articles/' + id, function (data) {
+                $('#title').val(data.data.title);
+                $('#author').val(data.data.author);
+                $('#source').val(data.data.source);
+                $('#content').val(data.data.content);
+                $('#createTime').val(new Date().toLocaleDateString());
+            });
+
+            $('#btnUpdate').click(function () {
+                //发送异步请求
+                $("#createTime").removeAttr("disabled");
+                // console.log($('#articleForm').serialize());
+                $.ajax({
+
+                    url: '/api/articles/' + id,
+                    type: 'put',
+                    data: $('#articleForm').serialize(),
+
+                    success: function (data) {
+                        alert(data.msg);
+                        $.ajax({
+                            url: '/api/articles/' + id,
+                            type: 'delete',
+                            success: function (data) {
+                                location.href = "/api/articles";
+                            }
+                        })
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <form action="" id="articleForm">
+        <table>
+            <tr>
+                <td class="lefttable">标题</td>
+                <td><input type="text" name="title" id="title" /></td>
+            </tr>
+            <tr>
+                <td class="lefttable">作者</td>
+                <td><input type="text" name="author" id="author" /></td>
+            </tr>
+            <tr>
+                <td class="lefttable">来源</td>
+                <td><input type="text" name="source" id="source" /></td>
+            </tr>
+            <tr>
+                <td class="lefttable">内容</td>
+                <td><input name="content" id="content" rows="5" cols="20" /></td>
+            </tr>
+            <tr>
+                <td class="lefttable">时间</td>
+                <td><input disabled name="createTime" id="createTime" rows="5" cols="20" /></td>
+            </tr>
+            <tr>
+                <td class="lefttable">&nbsp;</td>
+                <td><input type="button" id="btnUpdate" value="发布" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

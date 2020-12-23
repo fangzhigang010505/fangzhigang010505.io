@@ -4,103 +4,103 @@ h1,
 h2,
 h3,
 h4 {
-	margin: 0;
-	font-style: normal;
+    margin: 0;
+    font-style: normal;
 }
 
 ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 img {
-	border: none;
-	vertical-align: middle;
+    border: none;
+    vertical-align: middle;
 }
 
 a {
-	text-decoration: none;
-	color: #3c3c3c;
-	font-style: none;
+    text-decoration: none;
+    color: #3c3c3c;
+    font-style: none;
 }
 
 i {
-	font-style: normal;
+    font-style: normal;
 }
 
 table {
-	border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 th,
 td {
-	padding: 0;
+    padding: 0;
 }
 
 input,
 button {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 button {
-	outline: none;
+    outline: none;
 }
 
 body {
-	font: 12px/1.5 tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
-	color: #3c3c3c;
-	background-color: #f4f4f4;
+    font: 12px/1.5 tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+    color: #3c3c3c;
+    background-color: #f4f4f4;
 }
 
 .mr5 {
-	margin: 5px;
+    margin: 5px;
 }
 
 .mr7 {
-	margin: 7px;
+    margin: 7px;
 }
 
 .clearfix::after {
-	content: '';
-	display: block;
-	clear: both;
+    content: '';
+    display: block;
+    clear: both;
 }
 
 .fl {
-	float: left;
+    float: left;
 }
 
 .fr {
-	float: right;
+    float: right;
 }
 
 .layer {
-	width: 1190px;
-	margin: 0 auto;
+    width: 1190px;
+    margin: 0 auto;
 }
 
 .c4 {
-	color: #f40;
+    color: #f40;
 }
 
 .c5 {
-	color: #f50;
+    color: #f50;
 }
 
 .c6 {
-	color: #8d7afb;
+    color: #8d7afb;
 }
 
 .c7 {
-	color: #a87001;
+    color: #a87001;
 }
 
 .mt10 {
-	margin-top: 10px:
+    margin-top: 10px;
 }
 
 .mr10 {
-	margin-right: 10px:
+    margin-right: 10px;
 }
